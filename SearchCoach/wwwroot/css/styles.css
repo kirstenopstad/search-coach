@@ -1,0 +1,58 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+
+}
+
+a{
+  color: black;
+  font-weight: 400;
+}
+
+a:hover{
+  color: black;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+h4{
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: black;
+}
+
+li{
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: black;
+  padding-right: 4%;
+  padding-top: 2%;
+  list-style: none;
+}
+
+p{
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: black;
+  padding-top: 2%;
+}
+
+ul{
+  list-style: none;
+}
+
+.enlarge {
+  transition: transform .3s;
+  color: black;
+}
+
+.enlarge:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+#navbar{
+  background-color: rgb(245, 246, 234);
+}

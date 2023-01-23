@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SearchCoach.Models.Company
+
+<h1>Edit Company Info Below</h1>
+@using (@Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.CompanyId)
+  <li>Name: @Html.EditorFor(model => model.Name, new {placeholder = @Html.DisplayFor(model => model.Name)})</li>
+  
+  <input type="submit" value="Edit" class="btn btn-lg btn-info" style="margin-top: 4%;, margin-bottom: 3%;"/>
+}
+
+<p class="enlarge">@Html.ActionLink("Back to Companies", "Index")</p>
+<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>

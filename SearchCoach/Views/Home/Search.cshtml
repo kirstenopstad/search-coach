@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SearchCoach.Models;
+
+<h2>Applications</h2>
+<ul class="mb-5 list-group">
+@if (Model.Count != 0)
+  {
+    @foreach (Application application in Model["applications"])
+    {
+      <li class="list-group-item list-group-item-action enlarge">@Html.ActionLink($"{application.Role}", "Details", "Applications", new { id = application.ApplicationId})</li>
+    }
+  }
+  else
+  {
+    <h3>No applications Found</h3>
+  }
+</ul>
+
+<h2>Companies</h2>
+<ul class="mb-5 list-group">
+@if (Model.Count != 0)
+  {
+    @foreach (Company company in Model["companies"])
+    {
+      <li class="list-group-item list-group-item-action enlarge">@Html.ActionLink($"{company.Name}", "Details", "Companies", new { id = company.CompanyId})</li>
+    }
+  }
+  else
+  {
+    <h3>No companies found</h3>
+  }
+</ul>

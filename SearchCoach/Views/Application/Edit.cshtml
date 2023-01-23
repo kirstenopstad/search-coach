@@ -1,0 +1,75 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SearchCoach.Models.Application
+<div class="jumbotron text-center">
+<h2>Edit</h2>
+
+<h4>Edit this applicatio : @Html.DisplayFor(model => model.Role)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ApplicationId)
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Role)
+      @Html.TextBoxFor(model => model.Role)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.ResumeURL)
+      @Html.TextBoxFor(model => model.ResumeURL)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.CoverLetterURL)
+      @Html.TextBoxFor(model => model.CoverLetterURL)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.IsRemote)
+      @Html.CheckBoxFor(model => model.IsRemote)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.IsHybrid)
+      @Html.CheckBoxFor(model => model.IsHybrid)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.TechStack)
+      @Html.TextBoxFor(model => model.TechStack)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Network)
+      @Html.TextBoxFor(model => model.Network)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Company)
+      @Html.DropDownList("CompanyuId")
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status)
+      @Html.DropDownList("StatusId")
+      </div>
+  </div>
+
+  <input type="submit" value="Add new application" class="btn-secondary" />
+}
+<div class="button">
+  <p>@Html.ActionLink("Back to list", "Index")</p>
+</div>
+
+</div>

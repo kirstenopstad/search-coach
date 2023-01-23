@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Create Company</h1>
+
+@model SearchCoach.Models.Company
+@using (@Html.BeginForm())
+{
+  <h3>Company: @Html.TextBoxFor(model => model.Name, new { placeholder="Company Name"})</h3>
+  <input type="submit" value="Create" class="btn btn-info">
+}
+
+<p class="enlarge">@Html.ActionLink("Back to Companies", "Index")</p>
+<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>

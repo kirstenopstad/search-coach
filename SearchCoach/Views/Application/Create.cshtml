@@ -1,0 +1,73 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SearchCoach.Models.Application
+
+<p><strong>NOTE:</strong> You need to have at least one company before you can add an application!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Companies") to add a company.</p>
+<h4>Add a new application</h4>
+
+
+@using (Html.BeginForm())
+{
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Role)
+      @Html.TextBoxFor(model => model.Role)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.ResumeURL)
+      @Html.TextBoxFor(model => model.ResumeURL)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.CoverLetterURL)
+      @Html.TextBoxFor(model => model.CoverLetterURL)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.IsRemote)
+      @Html.CheckBoxFor(model => model.IsRemote)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.IsHybrid)
+      @Html.CheckBoxFor(model => model.IsHybrid)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.TechStack)
+      @Html.TextBoxFor(model => model.TechStack)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Network)
+      @Html.TextBoxFor(model => model.Network)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Company)
+      @Html.DropDownList("CompanyId")
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status)
+      @Html.DropDownList("StatusId")
+      </div>
+  </div>
+
+  <input type="submit" value="Add new application" class="btn-secondary" />
+}
+<div class="button">
+  <p class="enlarge">@Html.ActionLink("Show all applications", "Index")</p>
+</div>

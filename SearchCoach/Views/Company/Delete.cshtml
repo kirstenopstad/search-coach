@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Delete Company</h1>
+@model SearchCoach.Models.Company
+
+<ul>
+  <li>Name: @Html.DisplayFor(model => model.Name)</li>
+</ul>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-danger btn-md" style="margin-bottom: 3%">
+}
+
+<p class="enlarge">@Html.ActionLink("Back to Companies", "Index")</p>
+<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>

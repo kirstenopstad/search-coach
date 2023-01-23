@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Companies</h1>
+<hr>
+
+@using SearchCoach.Models
+
+@if(Model.Count == 0)
+{
+  <h2>No companies yet..</h2>
+}
+else
+{
+  <ul style="margin-bottom: 4%;">
+  @foreach(Company company in Model)
+  {
+    <li class="enlarge">@Html.ActionLink($"{company.Name}", "Details", new { id = company.CompanyId })</li>
+  }
+  </ul>
+}
+
+<p class="enlarge">@Html.ActionLink("Add", "Create", "Company")</p>
+<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>

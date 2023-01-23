@@ -1,0 +1,53 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SearchCoach.Models
+@model SearchCoach.Models.Application
+<div class="jumbotron text-center">
+
+<h2>Application Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Role): @Html.DisplayFor(model => model.Role)</h3>
+
+@if(@Model.Company == null)
+{
+  <p>This Application does not belong to a company</p>
+}
+else
+{
+  <h4>Treats the Application belongs to:</h4>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.Role): @Html.DisplayFor(model => model.Role) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.ResumeURL): @Html.DisplayFor(model => model.ResumeURL) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.CoverLetterURL): @Html.DisplayFor(model => model.CoverLetterURL) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.IsRemote): @Html.DisplayFor(model => model.IsRemote) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.IsHybrid): @Html.DisplayFor(model => model.IsHybrid) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.TechStack): @Html.DisplayFor(model => model.TechStack) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.Network): @Html.DisplayFor(model => model.Network) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.Company): @Html.DisplayFor(model => model.Company) </li>
+
+    <li class="list-group-item">
+      @Html.DisplayNameFor(model => model.Status): @Html.DisplayFor(model => model.Status) </li>
+  </ul>
+}
+</div>
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.ApplicationId })</p>
+<p>@Html.ActionLink("Edit Application", "Edit", new { id = Model.ApplicationId })</p>
+<p>@Html.ActionLink("Delete Application", "Delete", new { id = Model.ApplicationId })</p>
