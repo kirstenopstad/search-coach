@@ -1,51 +1,101 @@
-# ToDo List
+# Search Coach
 
-#### By Kirsten Opstad & Daniel Yakovlev
+#### By Kirsten Opstad, Bodie Wood, Henry Sullivan, and Anton Chumachenko
 
-#### A ToDo List Console App
+#### A web app for tracking job application progress.
 
 ## Technologies Used
 
 * C#
 * .Net 6
+* ASP.Net Core 6 MVC
+* EF Core 6
+* SQL
+* MySQL
+* MySQL Workbench
+* LINQ
 
 ## Description
 
+A web app for tracking job search, displaying data from user-inputted search metrics.
+
 ### Objectives (MVP)
 
-App allows the user to add new items to a to do list. The user should also be able to see a list of the tasks they have already added.
+#### User Stories
+– User can create and login to a user profile.
+– When logged in, user can:
+  - View all applications 
+  - Add new applications
+  - Update application details
+  - Delete applications
+– When logged in, the "splash" page includes:
+  - Weekly application average
+  - List of open Applications
+  - Count of Companies Applied to
 
-For example, the program could work like this:
+#### Schema
+* Includes relational databases to track multiple job applications for a given user.
+  schema: search_coach
+  tables: User Profiles, Companies, Applications, Status
+#### Classes
+* Profile class joins users to profiles.
+* Company class contains company name, one-to-many relationship with Application and has full CRUD functionality.
+* Application class contains application data (companyId, role, salary, location, remote/hybrid/in-person, etc.) and has full CRUD functionality.
+* Status class contains status details
 
-  Program: Welcome to the To Do List.
-  Program: Would you like to add an item to your list or view your list? (Add/View)
-  User: Add
-  Program: Please enter the description for the new item.
-  User: Walk the dog.
-  Program: 'Walk the dog' has been added to your list. Would you like to add an item to your list or view your list? (Add/View)
-  User: View
-  Program: 1. Walk the dog.
-  Program: Would you like to add an item to your list or view your list? (Add/View)
-
-Consider what the program should print if the user asks to view their list before they have added any items to it.
-
-<!-- [x] Screenshots
-
-![Screenshots](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.03bZmDGXaBhBYyxxp3Ls3gHaEA%26pid%3DApi&f=1&ipt=e980d57210242747a51c41421e1f09a6de3b1fdaeaadd297496787bb64e80c88&ipo=images) -->
+<!-- ![Screenshot of Databases](imagelink) -->
 
 <!-- [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>) -->
 
+#### Process
+
+Day 1 – Companies & Applications 
+Day 2 – 
+Day 3 – 
+
 ### Goals
 1. Meet MVP
-2. Write Stellar Tests
+2. Create & call SearchCoachQuotesAPI to deliver inspiration on splash page
+3. Add method for displaying new job listings based on saved search
+4. Integrate with Git / LinkedIn to track progress on skill-building, networking, etc.
 
 ## Setup/Installation Requirements
 
-* Clone this repo to your workspace.
-* Navigate to the top level of the directory.
-* Navigate to program directory ``` $ cd ToDoList ```
-* Build the project with ``` $ dotnet build ```
-* Run the project with ``` $ dotnet run ```
+#### Get copy of MySQL database
+1. Clone this repo to your workspace.
+2. Open MySQLWorkbench [Click here for instructions to download]
+3. Under Administration Tab, select Data Import/Restore
+  * Select 'Import from Self Contained File'
+  * Select ../animal-shelter-export.sql from the AnimalShelter directory
+  <!-- ![Screenshot of MySQL Import Settings](INSERT SCREENSHOT LINK) -->
+  * Select "New..." and set new schema name to **PROJECT-NAME**
+  * Select 'Start Import'
+4. You should now have a copy of the **PROJECT-NAME** database on your machine.
+
+#### Open project
+1. Navigate to the `Project Name` directory.
+2. Create a file named `appsettings.json` with the following code. Be sure to update the Default Connection to your MySQL credentials.
+```
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=3306;database=[PROJECT-NAME];uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];",
+  }
+}
+```
+3. Install dependencies within the `Project Name` directory
+```
+$ dotnet restore
+````
+
+4. To build & run program in development mode 
+ ```
+ $ dotnet run
+ ```
+
+5. To build & run program in production mode 
+ ```
+ dotnet run --launch-profile "production"
+ ```
 
 ## Known Bugs
 
@@ -55,11 +105,10 @@ Consider what the program should print if the user asks to view their list befor
   * If you'd like to be credited, please also include your **_github user profile link_**
 
 ## License
-<!-- [Choose License](https://choosealicense.com/) -->
 
 MIT License
 
-Copyright (c) 2022 Kirsten Opstad & Daniel Yakovlev
+Copyright (c) 2023 Kirsten Opstad, Bodie Wood, Henry Sullivan, and Anton Chumachenko
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
