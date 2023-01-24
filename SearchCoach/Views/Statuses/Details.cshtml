@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SearchCoach.Models.Status
+@using SearchCoach.Models
+
+<h2>Status Details</h2>
+<hr />
+<h4>@Html.DisplayNameFor(model => model.Stage): @Html.DisplayFor(model => model.Stage)</h4>
+<p>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</p>
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+<p>@Html.DisplayNameFor(model => model.Interview1): @Html.DisplayFor(model => model.Interview1)</p>
+<p>@Html.DisplayNameFor(model => model.Interview2): @Html.DisplayFor(model => model.Interview2)</p>
+<p>@Html.DisplayNameFor(model => model.WhiteBoarding): @Html.DisplayFor(model => model.WhiteBoarding)</p>
+<p>@Html.DisplayNameFor(model => model.Offer): @Html.DisplayFor(model => model.Offer)</p>
+
+
+<p>@Html.ActionLink("Edit Status", "Edit", new { id = Model.StatusId }) | @Html.ActionLink("Back to list", "Index")</p>

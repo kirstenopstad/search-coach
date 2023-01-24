@@ -1,0 +1,61 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SearchCoach.Models.Status
+
+<h2 class="m-2">Edit</h2>
+
+<h4 class="m-4">Edit Status: @Html.DisplayFor(model => model.Stage)</h4>
+
+
+@using (Html.BeginForm())
+{
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Stage)
+        @Html.EditorFor(model => model.Stage)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Notes)
+        @Html.EditorFor(model => model.Notes)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.PhoneScreen)
+      @Html.EditorFor(model => model.PhoneScreen)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Interview1)
+      @Html.EditorFor(model => model.Interview1)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Interview2)
+      @Html.EditorFor(model => model.Interview2)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.WhiteBoarding)
+      @Html.EditorFor(model => model.WhiteBoarding)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Offer)
+      @Html.EditorFor(model => model.Offer)
+    </div>
+  </div>
+  <input type="submit" value="Save" class="btn-secondary"/>
+}
+
+<div class="button">
+  <p>@Html.ActionLink("Back to list", "Index")</p>
+</div>
