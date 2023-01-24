@@ -19,8 +19,7 @@ namespace SearchCoach.Models
     public string TechStack { get; set; }
     public string Network { get; set; }
     // reference
-    // public int ProfileId { get; set; }
-    // public Profile Profile { get; set; }
+    public ApplicationUser User { get; set; }
     [Required(ErrorMessage = "The Company field can't be empty!")]
     public int CompanyId { get; set; }
     public Company Company { get; set; }
