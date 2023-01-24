@@ -49,6 +49,10 @@ ul{
     border-radius:  1rem 1rem 1rem 1rem;
 }
 
+
+
+
+
 .enlarge {
   transition: transform .3s;
   color: black;
@@ -66,6 +70,10 @@ ul{
 .home-index h1 {
   font-family: 'Poppins', sans-serif;
   font-size: rem;
+}
+
+.index-application h2 {
+  margin-bottom: 2%;
 }
 
 .navbar-brand {
