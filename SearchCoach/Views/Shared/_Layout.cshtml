@@ -9,17 +9,25 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
       crossorigin="anonymous">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-    <a class="navbar-brand">SearchCoach | </a>
+    <a class="navbar-brand"><img src="/img/icons8-area-chart-30.png" alt="graph icon"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <a class="nav-link enlarge" href='/'>Home</a>
+      <a>@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data", @class = "d-inline-flex" }))
+      {
+        @Html.TextBox("query", "", new {placeholder="search", @class = "form-control", @id="search" })
+        <input type="submit" value="search" id="button-search">
+      }</a>
+      <a class="nav-link enlarge home" href='/'>Home</a>
       <a class="nav-link enlarge" href='/Profiles'>Profile</a>
       <a class="nav-link enlarge" href='/Applications'>Application</a>
 
