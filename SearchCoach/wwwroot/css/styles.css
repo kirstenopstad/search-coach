@@ -2,29 +2,29 @@ html {
   scroll-behavior: smooth;
 }
 
-body{
+body {
   background-color: #e9e5df;
   text-align: center;
 }
 
-a{
+a {
   color: black;
   font-weight: 400;
 }
 
-a:hover{
+a:hover {
   color: black;
   font-weight: 400;
   text-decoration: none;
 }
 
-h4{
+h4 {
   font-size: 1.625rem;
   font-weight: 600;
   color: black;
 }
 
-li{
+li {
   font-size: 1.5rem;
   font-weight: 400;
   color: black;
@@ -33,28 +33,23 @@ li{
   list-style: none;
 }
 
-
-p{
+p {
   font-size: 1.2rem;
   font-weight: 400;
   color: black;
   padding-top: 2%;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
 .application-info {
-    border-radius:  1rem 1rem 1rem 1rem;
+  border-radius: 1rem 1rem 1rem 1rem;
 }
 
-
-
-
-
 .enlarge {
-  transition: transform .3s;
+  transition: transform 0.3s;
   color: black;
 }
 
@@ -81,12 +76,17 @@ ul{
   margin-right: 2%;
 }
 
+.navimg {
+  height: 50px;
+  width: 50px;
+}
+
 .home {
   margin-left: 60%;
 }
 
 .user-info {
-  border-radius:  0.75rem 0.75rem 0.75rem 0.75rem;
+  border-radius: 0.75rem 0.75rem 0.75rem 0.75rem;
 }
 
 .welcome {
@@ -96,7 +96,7 @@ ul{
 }
 
 #search {
-  background-color: rgba(0,0,0,0.08);
+  background-color: rgba(0, 0, 0, 0.08);
   background-image: url(/img/icons8-search-30.png);
   background-repeat: no-repeat;
   text-indent: 20px;
@@ -105,20 +105,18 @@ ul{
 
 #button-search {
   margin-left: 2%;
-  border-radius:  0.25rem 0.25rem 0.25rem 0.25rem;
+  border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
   border: none;
 }
 
-#navbar{
-  background-color: #fff;
+#navbar {
+  background-color: rgba(255, 255, 255, 0.944);
+  font-size: 1.5rem;
   left: 0;
   width: 95vw;
   z-index: 100;
   margin: auto;
   margin-top: 0.5%;
   padding: 0.8rem 2.4rem;
-  border-radius:  2.2rem 2.2rem 2.2rem 2.2rem;
-  
-
+  border-radius: 2.2rem 2.2rem 2.2rem 2.2rem;
 }
-
