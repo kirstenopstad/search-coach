@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
- 
+
 namespace SearchCoach.ViewModels
 {
   public class RegisterViewModel
@@ -11,20 +11,22 @@ namespace SearchCoach.ViewModels
 
     [Required]
     [DataType(DataType.Password)]
+    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$", ErrorMessage = "Your password must contain at least six characters, a capital letter, a lowercase letter, a number, and a special character.")]
     public string Password { get; set; }
 
     [Required]
     [DataType(DataType.Password)]
-    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$", ErrorMessage = "Your password must contain at least six characters, a capital letter, a lowercase letter, a number, and a special character.")]
-    [Display(Name = "Confirm password")]
-    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    [Display(Name = "Confirm Password")]
+    [Compare("Password", ErrorMessage = "The password and confirmation password do not match. Try again.")]
     public string ConfirmPassword { get; set; }
 
     [Required]
     [Display(Name = "First Name")]
-    public string FirstName { get; set; }
+    public string FirstName {get; set; }
+
     [Required]
     [Display(Name = "Last Name")]
-    public string LastName { get; set; }
+    public string LastName {get; set; }
+
   }
 }

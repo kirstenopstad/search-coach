@@ -20,11 +20,28 @@ namespace SearchCoach.Controllers
       }
     public ActionResult Index()
     {
+      // 
+      // Stats!
+      Dictionary<string, int> stats = new Dictionary<string, int>();
+      // WeeklyAppAvg = total app count / total weeks
+      // int WeeklyAppAvg = 
+      // AllTimeAppCount = total app count
+      // int AllTimeAppCount =
+      // AllTimeCompCount = total comp count
+      // int AllTimeCompCount =
+      // AllTimePhoneCount = total phone screen count
+      int AllTimePhoneScreen = _db.Applications
+                                  .Include(model => model.Status)
+                                  .Where(model => model.Status.PhoneScreen == true).Count();
+      stats.Add("AllTimePhoneScreen", AllTimePhoneScreen);
+      // AllTimeInterview = total interview count
+      // int AllTimeInterview =
       Company[] companies = _db.Companies.ToArray();
       Application[] applications = _db.Applications.Include(model => model.Status).ToArray();
       Dictionary<string, object[]> model = new Dictionary<string, object[]>();
       model.Add("companies", companies);
       model.Add("applications", applications);
+      ViewBag.Stats = stats;
       return View(model);
     }
 
