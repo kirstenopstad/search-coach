@@ -8,7 +8,7 @@ namespace SearchCoach.Models
   {
     // properties, constructors, methods, etc. go here
     public int ApplicationId { get; set; }
-    [Required]
+    [Required(ErrorMessage = "The Role field can't be empty!")]
     public string Role { get; set; } //same as name
     public string ResumeURL { get; set; }
     public string CoverLetterURL { get; set; }
@@ -21,7 +21,7 @@ namespace SearchCoach.Models
     // reference
     // public int ProfileId { get; set; }
     // public Profile Profile { get; set; }
-    [Required]
+    [Required(ErrorMessage = "The Company field can't be empty!")]
     public int CompanyId { get; set; }
     public Company Company { get; set; }
     public int StatusId { get; set; }
