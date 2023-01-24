@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System;
 
 namespace SearchCoach.Controllers
 {
@@ -23,19 +24,38 @@ namespace SearchCoach.Controllers
       // 
       // Stats!
       Dictionary<string, int> stats = new Dictionary<string, int>();
+
       // WeeklyAppAvg = total app count / total weeks
-      // int WeeklyAppAvg = 
+      DateTime dateNow = DateTime.Now;
+      int WeeklyAppAvg = (_db.Applications.Count() / ((dateNow - _db.Applications.Date)/7));
+
+      stats.Add("WeeklyAppAvg", WeeklyAppAvg);
+
       // AllTimeAppCount = total app count
-      // int AllTimeAppCount =
+      int AllTimeAppCount = _db.Applications.Count();
+
+      stats.Add("AllTimeAppCount", AllTimeAppCount);
+
       // AllTimeCompCount = total comp count
-      // int AllTimeCompCount =
+      int AllTimeCompCount = _db.Companies.Count();
+
+      stats.Add("AllTimeCompCount", AllTimeCompCount);
+
       // AllTimePhoneCount = total phone screen count
       int AllTimePhoneScreen = _db.Applications
                                   .Include(model => model.Status)
                                   .Where(model => model.Status.PhoneScreen == true).Count();
+                                  
       stats.Add("AllTimePhoneScreen", AllTimePhoneScreen);
+
       // AllTimeInterview = total interview count
-      // int AllTimeInterview =
+      int AllTimeInterview  = _db.Applications
+                                  .Include(model => model.Status)
+                                  .Where(model => model.Status.Interview1 == true).Count();
+                                  //Need to include Interview2 count
+                                  
+      stats.Add("AllTimeInterview", AllTimeInterview);
+
       Company[] companies = _db.Companies.ToArray();
       Application[] applications = _db.Applications.Include(model => model.Status).ToArray();
       Dictionary<string, object[]> model = new Dictionary<string, object[]>();
