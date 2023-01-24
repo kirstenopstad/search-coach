@@ -20,6 +20,7 @@ namespace SearchCoach.Controllers
     // CREATE GET
     public ActionResult Create()
     {
+      ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
       return View();
     }
 
@@ -27,16 +28,25 @@ namespace SearchCoach.Controllers
     [HttpPost]
     public ActionResult Create(Application application)
     {
-      // instantiate new default Status status
-      Status status = new Status { Stage = "Saved" };
-      _db.Statuses.Add(status);
-      // add StatusId to application.StatusId
-      _db.SaveChanges();
-      application.StatusId = status.StatusId;
-      // application.CompanyId = status.CompanyId;
-      _db.Applications.Add(application);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+        return View(application);
+      }
+      else
+      {
+        // instantiate new default Status status
+        Status status = new Status { Stage = "Saved" };
+        _db.Statuses.Add(status);
+        // add StatusId to application.StatusId
+        _db.SaveChanges();
+        application.StatusId = status.StatusId;
+        // application.CompanyId = status.CompanyId;
+        _db.Applications.Add(application);
+        _db.SaveChanges();
+        
+        return RedirectToAction("Index");  
+      }
     }
 
     // READ ALL
@@ -56,16 +66,26 @@ namespace SearchCoach.Controllers
     // UPDATE GET
     public ActionResult Edit(int id)
     {
+      ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
       Application application = _db.Applications.FirstOrDefault(comp => comp.ApplicationId == id);
       return View(application);
     }
+
     // UPDATE POST
     [HttpPost]
     public ActionResult Edit(Application application)
     {
-      _db.Applications.Update(application);
-      _db.SaveChanges();
-      return RedirectToAction("Details", new { id = application.ApplicationId});
+      if (!ModelState.IsValid)
+      {
+        ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+        return View(application);
+      }
+      else
+      {
+        _db.Applications.Update(application);
+        _db.SaveChanges();
+        return RedirectToAction("Details", new { id = application.ApplicationId});
+      }
     }
     //DELETE GET
     public ActionResult Delete(int id)
