@@ -4,6 +4,7 @@ html {
 
 body{
   background-color: #e9e5df;
+  text-align: center;
 }
 
 a{
@@ -44,6 +45,10 @@ ul{
   list-style: none;
 }
 
+.application-info {
+    border-radius:  1rem 1rem 1rem 1rem;
+}
+
 .enlarge {
   transition: transform .3s;
   color: black;
@@ -63,8 +68,37 @@ ul{
   font-size: rem;
 }
 
-.side-bar {
-  
+.navbar-brand {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.home {
+  margin-left: 60%;
+}
+
+.user-info {
+  border-radius:  0.75rem 0.75rem 0.75rem 0.75rem;
+}
+
+.welcome {
+  margin-top: 5%;
+  margin-bottom: 7%;
+  font-size: 3.5rem;
+}
+
+#search {
+  background-color: rgba(0,0,0,0.08);
+  background-image: url(/img/icons8-search-30.png);
+  background-repeat: no-repeat;
+  text-indent: 20px;
+  padding: 0 1rem 0 20px;
+}
+
+#button-search {
+  margin-left: 2%;
+  border-radius:  0.25rem 0.25rem 0.25rem 0.25rem;
+  border: none;
 }
 
 #navbar{
@@ -76,6 +110,7 @@ ul{
   margin-top: 0.5%;
   padding: 0.8rem 2.4rem;
   border-radius:  2.2rem 2.2rem 2.2rem 2.2rem;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  
 
 }
+

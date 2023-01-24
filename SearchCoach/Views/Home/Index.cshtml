@@ -3,11 +3,11 @@
 }
 
 @using SearchCoach.Models;
-<h1>Welcome to the Search Coach!</h1>
-<hr>
+<h1 class="welcome">Welcome to the Search Coach!</h1>
+
 
 <div class="side-bar row">
-  <div class="card mb-4 col-sm-2 text-center">
+  <div class="card mb-4 col-sm-2 text-center user-info">
     <div><h4>User</h4></div>
 
     <div><h4>User Details</h4></div>
@@ -23,7 +23,7 @@
     </ul>
   </div>
   
-<div class="home-index text-center col-sm-10">
+<div class="home-index text-center col-sm-10 application-info">
 
   <div class="card mb-4 pt-2">
     <h4>Applications</h4>
@@ -44,7 +44,6 @@
 </div>
 
 
-<hr>
 
 <p class="enlarge">@Html.ActionLink("Manage Companies", "Index", "Company")</p> 
 <p class="enlarge">@Html.ActionLink("Manage Applications", "Index", "Application")</p>

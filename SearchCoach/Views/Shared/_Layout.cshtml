@@ -22,7 +22,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <a class="nav-link enlarge" href='/'>Home</a>
+      <a>@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data", @class = "d-inline-flex" }))
+      {
+        @Html.TextBox("query", "", new {placeholder="search", @class = "form-control", @id="search" })
+        <input type="submit" value="search" id="button-search">
+      }</a>
+      <a class="nav-link enlarge home" href='/'>Home</a>
       <a class="nav-link enlarge" href='/Profiles'>Profile</a>
       <a class="nav-link enlarge" href='/Applications'>Application</a>
 
