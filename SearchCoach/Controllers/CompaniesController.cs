@@ -29,10 +29,16 @@ namespace SearchCoach.Controllers
     [HttpPost]
     public ActionResult Create(Company company)
     {
-      _db.Companies.Add(company);
-      _db.SaveChanges();
-
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View(company);
+      }
+      else
+      {
+        _db.Companies.Add(company);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     // Read All
@@ -61,9 +67,16 @@ namespace SearchCoach.Controllers
     [HttpPost]
     public ActionResult Edit(Company company)
     {
-      _db.Companies.Update(company);
-      _db.SaveChanges();
-      return RedirectToAction("Details", new { id = company.CompanyId});
+      if (!ModelState.IsValid)
+      {
+        return View(company);
+      }
+      else
+      {
+        _db.Companies.Update(company);
+        _db.SaveChanges();
+        return RedirectToAction("Details", new { id = company.CompanyId});
+      }
     }
 
     // Delete GET
