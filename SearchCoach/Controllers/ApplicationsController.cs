@@ -52,7 +52,10 @@ namespace SearchCoach.Controllers
     // READ ALL
     public ActionResult Index()
     {
-      return View(_db.Applications.ToList());
+      List<Application> appList = _db.Applications
+                                      .Include(model=> model.Company)
+                                      .ToList();
+      return View(appList);
     }
     // READ DETAILS
     public ActionResult Details(int id)
