@@ -14,6 +14,7 @@
 * MySQL
 * MySQL Workbench
 * LINQ
+* Identity
 
 ## Description
 
