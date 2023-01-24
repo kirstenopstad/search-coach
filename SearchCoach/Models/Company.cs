@@ -8,6 +8,6 @@ namespace SearchCoach.Models
     public int CompanyId { get; set; }
     public string Name { get; set; }
     // reference
-    List<Application> Applications { get; set; }
+    public List<Application> Applications { get; set; }
   }
 }

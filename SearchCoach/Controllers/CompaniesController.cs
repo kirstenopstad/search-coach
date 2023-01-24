@@ -38,8 +38,7 @@ namespace SearchCoach.Controllers
     // Read All
     public ActionResult Index()
     {
-      List<Company> companies = _db.Companies.ToList;
-      return View(companies);
+      return View(_db.Companies.ToList());
     }
 
     // Read Details
@@ -47,14 +46,14 @@ namespace SearchCoach.Controllers
     {
       Company company = _db.Companies
                            .Include(comp => comp.Applications)
-                           .FirstorDefault(comp => comp.CompanyId == id);
+                           .FirstOrDefault(comp => comp.CompanyId == id);
       return View(company);
     }
     
     // Update GET 
     public ActionResult Edit(int id)
     {
-      Company company = _db.Companies.FirstorDefault(comp => comp.CompanyId == id);
+      Company company = _db.Companies.FirstOrDefault(comp => comp.CompanyId == id);
       return View(company);
     }
     
@@ -70,7 +69,7 @@ namespace SearchCoach.Controllers
     // Delete GET
     public ActionResult Delete(int id)
     {
-      Company company = _db.Companies.FirstorDefault(comp => comp.CompanyId == id);
+      Company company = _db.Companies.FirstOrDefault(comp => comp.CompanyId == id);
       return View(company);
     }
 
@@ -78,7 +77,7 @@ namespace SearchCoach.Controllers
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmation(int id)
     {
-      Company company = _db.Companies.FirstorDefault(comp => comp.CompanyId == id);
+      Company company = _db.Companies.FirstOrDefault(comp => comp.CompanyId == id);
       _db.Companies.Remove(company);
       _db.SaveChanges();
       return RedirectToAction("Index");

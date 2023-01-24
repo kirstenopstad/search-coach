@@ -47,15 +47,15 @@ namespace SearchCoach.Controllers
     public ActionResult Details(int id)
     {
       Application application = _db.Applications
-                           .Include(comp => comp.Companies)
-                           .Include(comp => comp.Statuses)
-                           .FirstorDefault(comp => comp.ApplicationId == id);
+                           .Include(comp => comp.Company)
+                           .Include(comp => comp.Status)
+                           .FirstOrDefault(comp => comp.ApplicationId == id);
       return View(application);
     }
     // UPDATE GET
     public ActionResult Edit(int id)
     {
-      Application application = _db.Applications.FirstorDefault(comp => comp.ApplicationId == id);
+      Application application = _db.Applications.FirstOrDefault(comp => comp.ApplicationId == id);
       return View(application);
     }
     // UPDATE POST
@@ -69,14 +69,14 @@ namespace SearchCoach.Controllers
     //DELETE GET
     public ActionResult Delete(int id)
     {
-      Application application = _db.Applications.FirstorDefault(comp => comp.ApplicationId == id);
+      Application application = _db.Applications.FirstOrDefault(comp => comp.ApplicationId == id);
       return View(application);
     }
     //DELETE POST
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmation(int id)
     {
-      Application application = _db.Applications.FirstorDefault(comp => comp.ApplicationId == id);
+      Application application = _db.Applications.FirstOrDefault(comp => comp.ApplicationId == id);
       _db.Applications.Remove(application);
       _db.SaveChanges();
       return RedirectToAction("Index");
