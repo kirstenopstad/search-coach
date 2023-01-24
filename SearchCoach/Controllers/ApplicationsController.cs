@@ -4,15 +4,21 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using SearchCoach.Models;
+using System.Threading.Tasks; // to use async methods
+using System.Security.Claims; // to use claim based authorization
+
 
 namespace SearchCoach.Controllers
 {
+  [Authorize]
   public class ApplicationsController : Controller
   {
     private readonly SearchCoachContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public ApplicationsController(SearchCoachContext db)
+    public ApplicationsController(UserManager<ApplicationUser> userManager, SearchCoachContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
@@ -26,7 +32,7 @@ namespace SearchCoach.Controllers
 
     // Create POST
     [HttpPost]
-    public ActionResult Create(Application application)
+    public async Task<ActionResult> Create(Application application)
     {
       if (!ModelState.IsValid)
       {
@@ -35,11 +41,16 @@ namespace SearchCoach.Controllers
       }
       else
       {
+        // Get user
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        // Associate currentUser with item's User property
+        application.User = currentUser;
         // instantiate new default Status status
         Status status = new Status { Stage = "Saved" };
         _db.Statuses.Add(status);
-        // add StatusId to application.StatusId
         _db.SaveChanges();
+        // add StatusId to application.StatusId
         application.StatusId = status.StatusId;
         // application.CompanyId = status.CompanyId;
         _db.Applications.Add(application);
