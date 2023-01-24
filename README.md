@@ -51,7 +51,7 @@ A web app for tracking job search, displaying data from user-inputted search met
 #### Process
 
 Day 1 – Companies & Applications 
-Day 2 – 
+Day 2 – Splash Page & Authentication
 Day 3 – 
 
 ### Goals

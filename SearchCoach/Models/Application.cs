@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SearchCoach.Models
 {
@@ -6,6 +8,7 @@ namespace SearchCoach.Models
   {
     // properties, constructors, methods, etc. go here
     public int ApplicationId { get; set; }
+    [Required]
     public string Role { get; set; } //same as name
     public string ResumeURL { get; set; }
     public string CoverLetterURL { get; set; }
@@ -18,9 +21,12 @@ namespace SearchCoach.Models
     // reference
     // public int ProfileId { get; set; }
     // public Profile Profile { get; set; }
+    [Required]
     public int CompanyId { get; set; }
     public Company Company { get; set; }
     public int StatusId { get; set; }
     public Status Status { get; set; } 
+    // public 
+    // DateTime Date { get; set; }
   }
 }
