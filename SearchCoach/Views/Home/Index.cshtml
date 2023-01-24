@@ -3,13 +3,27 @@
 }
 
 @using SearchCoach.Models;
-
 <h1>Welcome to the Search Coach!</h1>
-
 <hr>
 
-<div class="jumbotron text-center">
-  <h1>Hi</h1>
+<div class="side-bar row">
+  <div class="card mb-4 col-sm-2 text-center">
+    <div><h4>User</h4></div>
+
+    <div><h4>User Details</h4></div>
+    @if (Model["applications"].Length == 0)
+    {
+      <p>No applications have been added yet!</p>
+    } 
+    <ul class="list-group">
+      @foreach (Application application in Model["applications"])
+      {
+        <li class="list-group-item list-group-item-action">@Html.ActionLink(@application.Role, "Details", "Applications", new { id = @application.ApplicationId}) | </li>
+      }
+    </ul>
+  </div>
+  
+<div class="home-index text-center col-sm-10">
 
   <div class="card mb-4 pt-2">
     <h4>Applications</h4>
@@ -26,6 +40,10 @@
   </div>
 
 </div>
+  
+</div>
+
+
 <hr>
 
 <p class="enlarge">@Html.ActionLink("Manage Companies", "Index", "Company")</p> 

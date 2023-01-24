@@ -3,7 +3,7 @@ html {
 }
 
 body{
-
+  background-color: #e9e5df;
 }
 
 a{
@@ -32,6 +32,7 @@ li{
   list-style: none;
 }
 
+
 p{
   font-size: 1.2rem;
   font-weight: 400;
@@ -53,6 +54,28 @@ ul{
   color: black;
 }
 
+.home-index {
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-index h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: rem;
+}
+
+.side-bar {
+  
+}
+
 #navbar{
-  background-color: rgb(245, 246, 234);
+  background-color: #fff;
+  left: 0;
+  width: 95vw;
+  z-index: 100;
+  margin: auto;
+  margin-top: 0.5%;
+  padding: 0.8rem 2.4rem;
+  border-radius:  2.2rem 2.2rem 2.2rem 2.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
 }
