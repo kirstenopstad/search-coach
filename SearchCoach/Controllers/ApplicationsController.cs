@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
-using SearchCoach.Models;
 using System.Threading.Tasks; // to use async methods
 using System.Security.Claims; // to use claim based authorization
+using SearchCoach.Models;
 
 
 namespace SearchCoach.Controllers
