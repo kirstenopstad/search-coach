@@ -1,0 +1,56 @@
+@{
+  Layout = "_Layout";
+}
+@model SearchCoach.Models.Status
+
+
+<h1>Add a status</h1>
+<p>Add a status here:</p>
+@using (Html.BeginForm())
+{
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Stage)
+        @Html.TextBoxFor(model => model.Stage)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Notes)
+        @Html.TextBoxFor(model => model.Notes)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.PhoneScreen)
+      @Html.CheckBoxFor(model => model.PhoneScreen)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Interview1)
+      @Html.CheckBoxFor(model => model.Interview1)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Interview2)
+      @Html.CheckBoxFor(model => model.Interview2)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.WhiteBoarding)
+      @Html.CheckBoxFor(model => model.WhiteBoarding)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Offer)
+      @Html.CheckBoxFor(model => model.Offer)
+    </div>
+  </div>
+  <input type="submit" value="Add new status" class="btn-secondary"/>
+}
+
+<p class="m-4">@Html.ActionLink("Back to statuses", "Index")</p>
