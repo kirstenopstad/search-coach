@@ -11,5 +11,11 @@ namespace SearchCoach.Models
       [Required]
       [RegularExpression("^[a-zA-Z .]+$", ErrorMessage = "Invalid Name")]
       public string LastName {get;set;}
+      // Stats!
+      public int WeeklyAppAvg {get;set;}
+      public int AllTimeAppCount {get;set;}
+      public int AllTimeCompCount {get;set;}
+      public int AllTimePhoneScreen {get;set;}
+      public int AllTimeInterview {get;set;}
     }
 }
