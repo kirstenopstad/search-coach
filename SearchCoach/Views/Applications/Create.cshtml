@@ -8,6 +8,8 @@
 <p>Go to @Html.ActionLink("this page", "Create", "Companies") to add a company.</p>
 <h4>Add a new application</h4>
 
+<p>@Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
