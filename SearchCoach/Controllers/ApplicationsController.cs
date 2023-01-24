@@ -33,6 +33,7 @@ namespace SearchCoach.Controllers
       // add StatusId to application.StatusId
       _db.SaveChanges();
       application.StatusId = status.StatusId;
+      // application.CompanyId = status.CompanyId;
       _db.Applications.Add(application);
       _db.SaveChanges();
       return RedirectToAction("Index");
