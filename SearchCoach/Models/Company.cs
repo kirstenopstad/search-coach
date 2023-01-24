@@ -7,7 +7,7 @@ namespace SearchCoach.Models
   {
     // properties, constructors, methods, etc. go here
     public int CompanyId { get; set; }
-    [Required]
+    [Required(ErrorMessage = "The company name can't be empty!")]
     public string Name { get; set; }
     // reference
     public List<Application> Applications { get; set; }
