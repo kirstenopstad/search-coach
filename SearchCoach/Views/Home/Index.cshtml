@@ -8,28 +8,22 @@
 
 <div class="side-bar row">
   <div class="card mb-4 col-sm-2 text-center user-info">
-    <div><h4>User</h4></div>
+    <div><h4>User Stats</h4></div>
 
-    <div><h4>User Details</h4></div>
-    @if (Model["applications"].Length == 0)
-    {
-      <p>No applications have been added yet!</p>
-    } 
-    <ul class="list-group">
-      @foreach (Application application in Model["applications"])
-      {
-        <li class="list-group-item list-group-item-action">@Html.ActionLink(@application.Role, "Details", "Applications", new { id = @application.ApplicationId}) | </li>
-      }
-    </ul>
+    <div><h4>Stat 1</h4></div>
+    <div><h4>Stat 2</h4></div>
+    <div><h4>Stat 3</h4></div>
+    <div><h4>Stat 4</h4></div>
+  
   </div>
   
 <div class="home-index text-center col-sm-10 application-info">
 
   <div class="card mb-4 pt-2">
-    <h4>Applications</h4>
+    <h2>Applications</h2>
     @if (Model["applications"].Length == 0)
     {
-      <p>No applications have been added yet!</p>
+      <h3>No applications have been added yet!</h3>
     } 
     <ul class="list-group">
       @foreach (Application application in Model["applications"])
