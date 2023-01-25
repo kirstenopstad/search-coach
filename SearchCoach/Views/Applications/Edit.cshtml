@@ -56,18 +56,64 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       @Html.LabelFor(model => model.Company)
-      @Html.DropDownList("CompanyuId")
-      </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.Status)
-      @Html.DropDownList("StatusId")
+      @Html.DropDownList("CompanyId")
       </div>
   </div>
 
   <input type="submit" value="Add new application" class="btn-secondary" />
 }
+<div class="border-top mt-4 pt-4">
+@* EDIT STATUS *@
+@using (Html.BeginForm("Edit", "Statuses", routeValues: new { statusId = Model.Status.StatusId, id = Model.ApplicationId}))
+{
+  @Html.Hidden("StatusId", @Model.Status.StatusId)
+  
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Status.Stage)
+        @Html.EditorFor(model => model.Status.Stage)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.Status.Notes)
+        @Html.EditorFor(model => model.Status.Notes)
+      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status.PhoneScreen)
+      @Html.EditorFor(model => model.Status.PhoneScreen)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status.Interview1)
+      @Html.EditorFor(model => model.Status.Interview1)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status.Interview2)
+      @Html.EditorFor(model => model.Status.Interview2)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status.WhiteBoarding)
+      @Html.EditorFor(model => model.Status.WhiteBoarding)
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Status.Offer)
+      @Html.EditorFor(model => model.Status.Offer)
+    </div>
+  </div>
+  <input type="submit" value="Save" class="btn-secondary"/>
+}
+</div>
+
 <div class="button">
   <p>@Html.ActionLink("Back to list", "Index")</p>
 </div>

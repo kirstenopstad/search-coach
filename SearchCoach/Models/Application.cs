@@ -24,7 +24,7 @@ namespace SearchCoach.Models
     public int CompanyId { get; set; }
     public Company Company { get; set; }
     public int StatusId { get; set; }
-    public Status Status { get; set; } 
+    public Status Status { get; set; }
     public DateTime Date { get; set; }
   }
 }

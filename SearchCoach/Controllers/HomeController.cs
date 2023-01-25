@@ -27,7 +27,8 @@ namespace SearchCoach.Controllers
 
       // WeeklyAppAvg = total app count / total weeks
       DateTime dateNow = DateTime.Now;
-      int WeeklyAppAvg = (_db.Applications.Count() / ((dateNow - _db.Applications.Date)/7));
+      int WeeklyAppAvg = (_db.Applications.Count());
+      // int WeeklyAppAvg = (_db.Applications.Count() / ((dateNow - _db.Applications.Date)/7));
 
       stats.Add("WeeklyAppAvg", WeeklyAppAvg);
 
