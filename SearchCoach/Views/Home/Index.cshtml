@@ -3,6 +3,7 @@
 }
 
 @using SearchCoach.Models;
+
 <h1 class="welcome">Welcome to the Search Coach!</h1>
 
 
@@ -10,7 +11,7 @@
   <div class="col-lg-4 user-info">
     <div class="user-stat-outer">
       <img src="/img/profile-photo.jpg" alt="profile-photo" class="profile-photo">
-      <h4>Bodie's Status</h4>
+      <h4>@User.Identity.Name!</h4>
     </div>
 
     <div class="user-stat-inner">
