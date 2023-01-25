@@ -11,8 +11,8 @@ using SearchCoach.Models;
 namespace SearchCoach.Migrations
 {
     [DbContext(typeof(SearchCoachContext))]
-    [Migration("20230125162853_initial")]
-    partial class initial
+    [Migration("20230125193024_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,6 +222,14 @@ namespace SearchCoach.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
