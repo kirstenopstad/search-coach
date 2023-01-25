@@ -11,5 +11,6 @@ namespace SearchCoach.Models
     public DbSet<Status> Statuses { get; set; }
 
     public SearchCoachContext(DbContextOptions options) : base(options) { }
+  
   }
 }

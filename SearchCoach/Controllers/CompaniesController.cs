@@ -1,18 +1,26 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Threading.Tasks; // to use async methods
+using System.Security.Claims; // to use claim based authorization
 using SearchCoach.Models;
 
 namespace SearchCoach.Controllers
 {
+  [Authorize]
   public class CompaniesController : Controller
   {
     private readonly SearchCoachContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public CompaniesController(SearchCoachContext db)
+    public CompaniesController(UserManager<ApplicationUser> userManager, SearchCoachContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
@@ -20,14 +28,12 @@ namespace SearchCoach.Controllers
     // Create GET
     public ActionResult Create()
     {
-      ViewBag.CompanyIId = new SelectList(_db.Companies, "CompanyId", "Name");
-      ViewBag.StatusIId = new SelectList(_db.Statuses, "StatusId", "Name");
       return View();
     }
 
     // Create POST
     [HttpPost]
-    public ActionResult Create(Company company)
+    public async Task<ActionResult> Create(Company company)
     {
       if (!ModelState.IsValid)
       {
@@ -35,6 +41,11 @@ namespace SearchCoach.Controllers
       }
       else
       {
+        // Get user
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        // Associate currentUser with company's User property
+        company.User = currentUser;
         _db.Companies.Add(company);
         _db.SaveChanges();
         return RedirectToAction("Index");

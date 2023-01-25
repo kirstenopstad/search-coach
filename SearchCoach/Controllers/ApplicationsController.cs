@@ -26,9 +26,12 @@ namespace SearchCoach.Controllers
 
     // Routes
     // CREATE GET
-    public ActionResult Create()
+    public async Task<ActionResult> Create()
     {
-      ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+      // Get user
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      ViewBag.CompanyId = new SelectList(_db.Companies.Where(entry => entry.User.Id == currentUser.Id), "CompanyId", "Name");
       return View();
     }
 
@@ -38,7 +41,10 @@ namespace SearchCoach.Controllers
     {
       if (!ModelState.IsValid)
       {
-        ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+        // Get user
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        ViewBag.CompanyId = new SelectList(_db.Companies.Where(entry => entry.User.Id == currentUser.Id), "CompanyId", "Name");
         return View(application);
       }
       else
@@ -80,9 +86,12 @@ namespace SearchCoach.Controllers
       return View(application);
     }
     // UPDATE GET
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id)
     {
-      ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+      // Get user
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      ViewBag.CompanyId = new SelectList(_db.Companies.Where(entry => entry.User.Id == currentUser.Id), "CompanyId", "Name");
       Application application = _db.Applications
                            .Include(comp => comp.Company)
                            .Include(comp => comp.Status)
@@ -92,11 +101,14 @@ namespace SearchCoach.Controllers
 
     // UPDATE POST
     [HttpPost]
-    public ActionResult Edit(Application application)
+    public async Task<ActionResult> Edit(Application application)
     {
       if (!ModelState.IsValid)
       {
-        ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
+        // Get user
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        ViewBag.CompanyId = new SelectList(_db.Companies.Where(entry => entry.User.Id == currentUser.Id), "CompanyId", "Name");
         return View(application);
       }
       else
