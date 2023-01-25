@@ -11,6 +11,7 @@ body {
 a {
   color: black;
   font-weight: 400;
+  text-decoration: none;
 }
 
 a:hover {
@@ -105,9 +106,6 @@ ul {
   width: 50px;
 }
 
-.home {
-  margin-left: 60%;
-}
 
 .profile-photo {
   height: 12rem;
@@ -162,14 +160,13 @@ ul {
   background-image: url(/img/icons8-search-30.png);
   background-repeat: no-repeat;
   text-indent: 20px;
-  padding: 0 1rem 0 20px;
   margin: auto; /*maybe?*/
 }
 
 #button-search {
-  margin-left: 2%;
   border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
   border: none;
+  background-color: rgba(246,246,246,255);
 }
 
 #navbar {
@@ -182,7 +179,7 @@ ul {
   margin-top: 0.5%;
   padding: 0.8rem 2.4rem;
   border-radius: 2.2rem 2.2rem 2.2rem 2.2rem;
-    box-shadow: 5px 5px 10px -5px #696868;
+  box-shadow: 5px 5px 10px -5px #696868;
 }
 
 @keyframes pointers {

@@ -11,8 +11,8 @@ using SearchCoach.Models;
 namespace SearchCoach.Migrations
 {
     [DbContext(typeof(SearchCoachContext))]
-    [Migration("20230125001821_ReBuild")]
-    partial class ReBuild
+    [Migration("20230125162853_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

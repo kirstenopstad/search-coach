@@ -12,31 +12,48 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+    <div class="container-fluid">
     <a class="navbar-brand"><img src="/img/icons8-job-64.png" class="navimg" alt="graph icon"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <a>@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data", @class = "d-inline-flex" }))
-      {
-        @Html.TextBox("query", "", new {placeholder="search", @class = "form-control", @id="search" })
-        <input type="submit" value="search" id="button-search">
-      }</a>
-      <a class="nav-link enlarge home" href='/'>Home</a>
-      <a class="nav-link enlarge" href='/Account'>Profile</a>
-      <a class="nav-link enlarge" href='/Applications'>Application</a>
 
-      @* <a class="nav-link" style="margin-left: auto;">@Html.ActionLink("Log in", "Login", "Account")</a> *@
-      @* <a class="nav-link">|@Html.ActionLink("Register", "Register", "Account")</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <a>@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data", @class = "d-inline-flex" }))
+          {
+            @Html.TextBox("query", "", new {placeholder="search", @class = "form-control", @id="search" })
+          <input type="submit" value="search" id="button-search">
+          }</a>
+
+      <ul class="navbar-nav ml-auto order-0">
+        <li class="nav-item">
+          <a class="nav-link enlarge home" href='/'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link enlarge" href='/Account'>Profile</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link enlarge" href='/Applications'>Application</a>
+        </li>
+      </ul>
+        @* <a class="nav-link" style="margin-left: auto;">@Html.ActionLink("Log in", "Login", "Account")</a> *@
+        @* <a class="nav-link">|@Html.ActionLink("Register", "Register", "Account")</a>
         <a class="nav=link" style="margin-right: 1%;">@Html.ActionLink("Manage", "Index", "Account")</a> *@
 
+      </div>
+      <div class="ml-auto">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
     </div>
+
   </nav>
+
   <div class="container">
     @RenderBody()
     @* @await Html.PartialAsync("Footer") *@
