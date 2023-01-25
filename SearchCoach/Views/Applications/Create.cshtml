@@ -61,6 +61,13 @@
       @Html.DropDownList("CompanyId")
       </div>
   </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      @Html.LabelFor(model => model.Date)
+      @Html.TextBoxFor(model => model.Date, new { type = "date" })
+    </div>
+  </div>
+  
 
   <input type="submit" value="Add new application" class="btn-secondary" />
 }

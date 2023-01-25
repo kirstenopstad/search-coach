@@ -15,6 +15,6 @@ namespace SearchCoach.Models
     public bool WhiteBoarding { get; set; }
     public bool Offer { get; set; }
     public string Notes { get; set; }
-    public List<Application> Applications { get; set; }
+    public Application Application { get; set; } 
   }
 }

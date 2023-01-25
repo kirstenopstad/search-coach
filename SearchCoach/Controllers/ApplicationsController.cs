@@ -83,7 +83,10 @@ namespace SearchCoach.Controllers
     public ActionResult Edit(int id)
     {
       ViewBag.CompanyId = new SelectList(_db.Companies, "CompanyId", "Name");
-      Application application = _db.Applications.FirstOrDefault(comp => comp.ApplicationId == id);
+      Application application = _db.Applications
+                           .Include(comp => comp.Company)
+                           .Include(comp => comp.Status)
+                           .FirstOrDefault(comp => comp.ApplicationId == id);
       return View(application);
     }
 

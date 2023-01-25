@@ -19,7 +19,7 @@ namespace SearchCoach.Controllers
     public ActionResult Index()
     {
       List<Status> model = _db.Statuses
-                              .Include(status => status.Applications)
+                              .Include(status => status.Application)
                               .ToList();
       return View(model);
     }
@@ -40,7 +40,7 @@ namespace SearchCoach.Controllers
     public ActionResult Details(int id)
     {
       Status thisStatus = _db.Statuses
-                                  .Include(status => status.Applications)
+                                  .Include(status => status.Application)
                                   .FirstOrDefault(status => status.StatusId == id);
       return View(thisStatus);
     }
@@ -53,11 +53,20 @@ namespace SearchCoach.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Status status)
+    public ActionResult Edit(Status status, int StatusId, int id)
     {
+        status.StatusId = StatusId;
         _db.Statuses.Update(status);
         _db.SaveChanges();
-        return RedirectToAction("Index");
+        return RedirectToAction("Details", "Applications", new { id = id});
     }
+
+    // [HttpPost]
+    // public ActionResult Edit(Treat treat)
+    // {
+    //   _db.Treats.Update(treat);
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
   }
 }
