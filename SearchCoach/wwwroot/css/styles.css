@@ -163,6 +163,7 @@ ul {
   background-repeat: no-repeat;
   text-indent: 20px;
   padding: 0 1rem 0 20px;
+  margin: auto; /*maybe?*/
 }
 
 #button-search {
