@@ -1,3 +1,4 @@
+
 @{
   Layout = "_Layout";
 }
@@ -39,7 +40,7 @@ else
       @Html.DisplayNameFor(model => model.Network): @Html.DisplayFor(model => model.Network) </li>
 
     <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Company): @Html.DisplayFor(model => model.Company) </li>
+      @Html.DisplayNameFor(model => model.Company): @Html.DisplayFor(model => model.Company.Name) </li>
 
     <li class="list-group-item border-top-4">
       @Html.DisplayNameFor(model => model.Status.Stage): @Html.DisplayFor(model => model.Status.Stage) </li>

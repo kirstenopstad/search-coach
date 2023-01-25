@@ -26,5 +26,6 @@ namespace SearchCoach.Models
     public int StatusId { get; set; }
     public Status Status { get; set; }
     public DateTime Date { get; set; }
+    
   }
 }
