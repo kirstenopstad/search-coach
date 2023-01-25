@@ -30,13 +30,17 @@ namespace SearchCoach.Controllers
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
 
-      #nullable enable
-      // query for applications belonging to current User
-      IQueryable<Application>? userApps = _db.Applications.Where(entry => entry.User.Id == currentUser.Id);
-      #nullable disable
-      
-      if (userApps != null)
-      {
+      IQueryable<Application> userApps = _db.Applications.Where(entry => entry.User.Id == currentUser.Id);
+      Dictionary<string, object[]> model = new Dictionary<string, object[]>();
+      Company[] companies = _db.Companies
+                                      .Where(entry => entry.User.Id == currentUser.Id)
+                                      .ToArray();
+      Application[] applications = userApps.Include(model => model.Status).ToArray();
+        
+      model.Add("companies", companies);
+      model.Add("applications", applications);
+      if (userApps != null) { // get stats
+        // get status
         // Stats!
         Dictionary<string, int> stats = new Dictionary<string, int>();
         // WeeklyAppAvg = total app count / total weeks
@@ -45,19 +49,32 @@ namespace SearchCoach.Controllers
         double AppCountToDouble = System.Convert.ToDouble(AppCount); // get count of all apps 1
         // get total days count
         double dateNow = DateTime.Now.ToOADate(); // get current date 1/24/22
-        Application FirstApp = userApps.FirstOrDefault(model => model.ApplicationId == 1); // get date of first app ever submitted 1/23/22
-        double dateOfFirstApp = FirstApp.Date.ToOADate(); // get date of first app ever submitted 1/23/22
-        int elapsedDays = (int)(dateNow - dateOfFirstApp); // get elapsed days
-        int elapsedWeeks = (elapsedDays / 7); if ((elapsedDays % 7) > 0) {elapsedWeeks++;} // get elapsed weeks
-        // TODO: add test for above
-          // if elapsedDays == 0, then 0 wk
-          // if elapsedDays == 2, then 1 wk
-          // if elapsedDays == 21, then 3 wk
-          // if elapsedDays == 23, then 4 wk
-        double WeeklyAppAvgDouble = (AppCountToDouble / elapsedWeeks);
-        int WeeklyAppAvg = (int)WeeklyAppAvgDouble;
 
-        stats.Add("WeeklyAppAvg", WeeklyAppAvg);
+        // !!!!! The issue was in how we were looking for "first app" 
+        // with many users, the "first app" id will be varied, not start at 1 every time
+        // so instead of finding by id, we have to sort and choose first
+        int WeeklyAppAvg = 0; // initialize appAvg 
+        if (applications.Length != 0) // if no first app, 
+        {
+          Application FirstApp = userApps.OrderBy(app => app.Date).First(); // get date of first app ever submitted 1/23/22 
+          double dateOfFirstApp = FirstApp.Date.ToOADate(); // get date of first app ever submitted 1/23/22
+          int elapsedDays = (int)(dateNow - dateOfFirstApp + 1); // get elapsed days + 1 to include the present day as a day
+          int elapsedWeeks = (elapsedDays / 7); if ((elapsedDays % 7) > 0) {elapsedWeeks++;} // get elapsed weeks
+          // TODO: add test for above
+            // if elapsedDays == 0, then 0 wk
+            // if elapsedDays == 2, then 1 wk
+            // if elapsedDays == 21, then 3 wk
+            // if elapsedDays == 23, then 4 wk
+          double WeeklyAppAvgDouble = (AppCountToDouble / elapsedWeeks);
+          WeeklyAppAvg = (int)WeeklyAppAvgDouble;
+
+          stats.Add("WeeklyAppAvg", WeeklyAppAvg);
+        }
+        else
+        {
+          WeeklyAppAvg = 0;
+          stats.Add("WeeklyAppAvg", WeeklyAppAvg);
+        }
 
         // AllTimeAppCount = total app count
         int AllTimeAppCount = userApps.Count();
@@ -90,22 +107,9 @@ namespace SearchCoach.Controllers
                                   
         int AllTimeInterview = AllTimeInterview1 + AllTimeInterview2;
         stats.Add("AllTimeInterview", AllTimeInterview);
-
-        Company[] companies = _db.Companies
-                                      .Where(entry => entry.User.Id == currentUser.Id)
-                                      .ToArray();
-        Application[] applications = userApps.Include(model => model.Status).ToArray();
-        Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-        model.Add("companies", companies);
-        model.Add("applications", applications);
         ViewBag.Stats = stats;
-
-        return View(model);
       }
-      else
-      {
-        return View();
-      }
+      return View(model);      
     }
 
     public ActionResult Search(string query)

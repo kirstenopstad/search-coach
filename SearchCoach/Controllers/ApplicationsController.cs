@@ -69,10 +69,14 @@ namespace SearchCoach.Controllers
     }
 
     // READ ALL
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
+      // Get user
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       List<Application> appList = _db.Applications
                                       .Include(model=> model.Company)
+                                      .Where(entry => entry.User.Id == currentUser.Id)
                                       .ToList();
       return View(appList);
     }

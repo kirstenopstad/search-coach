@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@using SearchCoach.Models;
+@using SearchCoach.Models
 
 <h1 class="welcome">Welcome to the Search Coach!</h1>
 
@@ -13,18 +13,27 @@
       <img src="/img/profile-photo.jpg" alt="profile-photo" class="profile-photo">
       <h4>@User.Identity.Name!</h4>
     </div>
-
-    <div class="user-stat-inner">
-    <div><h4>Weekly Application Average: @ViewBag.stats["WeeklyAppAvg"]</h4></div>
-    <hr>
-    <div><h4>Application Count: @ViewBag.stats["AllTimeAppCount"]</h4></div>
-    <hr>
-    <div><h4>Company Count: @ViewBag.stats["AllTimeCompCount"]</h4></div>
-    <hr>
-    <div><h4>Phone Screenings: @ViewBag.stats["AllTimePhoneScreen"]</h4></div>
-    <hr>
-    <div><h4>Interviews: @ViewBag.stats["AllTimeInterview"]</h4></div>
-  </div>
+    @* If application count != 0 *@
+    @if (Model["applications"].Length != 0 && ViewBag.stats.ContainsKey("WeeklyAppAvg"))
+    {
+      <div class="user-stat-inner">
+        <div><h4>Weekly Application Average: @ViewBag.stats["WeeklyAppAvg"]</h4></div>
+        <hr>
+        <div><h4>Application Count: @ViewBag.stats["AllTimeAppCount"]</h4></div>
+        <hr>
+        <div><h4>Company Count: @ViewBag.stats["AllTimeCompCount"]</h4></div>
+        <hr>
+        <div><h4>Phone Screenings: @ViewBag.stats["AllTimePhoneScreen"]</h4></div>
+        <hr>
+        <div><h4>Interviews: @ViewBag.stats["AllTimeInterview"]</h4></div>
+      </div>
+    }
+    else
+    {
+      <div class="user-stat-inner">
+        <div><h4>No stats to display yet!</h4></div>
+      </div>
+    }
   </div>
   
 <div class="home-index text-center col-lg-8 application-info">
@@ -35,12 +44,15 @@
     {
       <h3>No applications have been added yet!</h3>
     } 
-    <ul class="list-group">
-      @foreach (Application application in Model["applications"])
-      {
-        <li class="list-group-item list-group-item-action">@Html.ActionLink(@application.Role, "Details", "Applications", new { id = @application.ApplicationId}) | </li>
-      }
-    </ul>
+    else
+    {
+      <ul class="list-group">
+        @foreach (Application application in Model["applications"])
+        {
+          <li class="list-group-item list-group-item-action">@Html.ActionLink(@application.Role, "Details", "Applications", new { id = @application.ApplicationId}) | @Html.ActionLink(@application.Company.Name, "Details", "Companies", new { id = @application.Company.CompanyId})</li>
+        }
+      </ul>
+    }
   </div>
 
 </div>
@@ -48,6 +60,6 @@
   <img src="img/pointer.png" alt="" id="pointer">
   <div class="row manage">
   <div class="col"><p class="enlarge">@Html.ActionLink("Manage Companies", "Index", "Companies")</p> </div>
-  <div class="col"><p class="enlarge">@Html.ActionLink("Manage Applications", "Index", "Application")</p> </div>
+  <div class="col"><p class="enlarge">@Html.ActionLink("Manage Applications", "Index", "Applications")</p> </div>
   <div class="col"><p class="enlarge">@Html.ActionLink("Create or manage an account", "Index", "Account")</p></div>
 </div>
