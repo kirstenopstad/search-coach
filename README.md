@@ -23,16 +23,38 @@ A web app for tracking job search, displaying data from user-inputted search met
 ### Objectives (MVP)
 
 #### User Stories
-– User can create and login to a user profile.
+– User can create and login to a user profile. √
 – When logged in, user can:
-  - View all applications 
-  - Add new applications
+  - View all applications √
+  - Add new applications √
   - Update application details
   - Delete applications
 – When logged in, the "splash" page includes:
-  - Weekly application average
-  - List of open Applications
-  - Count of Companies Applied to
+  - Weekly application average 
+  - List of open Applications 
+  - Count of Companies Applied to 
+
+#### Punch List
+* Views/Home/Index -- Manage Apps & Manage Comps link broken
+* Views/Home/Index -- Add FirstName to ______ Status Title
+* Views/Home/Index -- Add stats: Weekly Avg, All time app / comp / int / phone etc. [from HomeController]
+* Views/Home/Index -- Add indicator to indicate status
+* Views/Home/Index -- get hamburger menu working
+* Views/Home/Index -- add logic to display "Log in to get started" to non-logged in users 
+
+* ApplicationsController -- "Edit" Route is not properly editing apps
+* View/Applications -- not reflecting edit changes -- maybe just controller
+* ApplicationsController -- "Delete" Route sends to a view that doesn't exist -- return to Home Index
+* ApplicationsController -- "Delete" notworking atm -- make it like company
+
+* ApplicationsController -- Add ability to update status/application from index
+* Views/Applications/Index -- Add table with details / edit in place (without changing pages)
+
+* Views/Companies/Edit – should button say save?
+
+* AppsController -- only show apps & stats related to logged in user
+
+* Authorize: CompsController + HomeController
 
 #### Schema
 * Includes relational databases to track multiple job applications for a given user.
