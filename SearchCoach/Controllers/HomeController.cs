@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 
 namespace SearchCoach.Controllers
 {
@@ -32,10 +33,10 @@ namespace SearchCoach.Controllers
       #nullable enable
       // query for applications belonging to current User
       IQueryable<Application>? userApps = _db.Applications.Where(entry => entry.User.Id == currentUser.Id);
-
+      #nullable disable
+      
       if (userApps != null)
       {
-
         // Stats!
         Dictionary<string, int> stats = new Dictionary<string, int>();
         // WeeklyAppAvg = total app count / total weeks
