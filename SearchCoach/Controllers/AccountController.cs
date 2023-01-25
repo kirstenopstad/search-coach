@@ -39,8 +39,8 @@ namespace SearchCoach.Controllers
       }
       else 
       {
-        // ApplicationUser user = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-        ApplicationUser user = new ApplicationUser { UserName = model.Email};
+        ApplicationUser user = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+        // ApplicationUser user = new ApplicationUser { UserName = model.Email};
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
