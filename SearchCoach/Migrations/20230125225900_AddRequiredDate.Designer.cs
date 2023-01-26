@@ -11,8 +11,8 @@ using SearchCoach.Models;
 namespace SearchCoach.Migrations
 {
     [DbContext(typeof(SearchCoachContext))]
-    [Migration("20230125222205_AddInitial")]
-    partial class AddInitial
+    [Migration("20230125225900_AddRequiredDate")]
+    partial class AddRequiredDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
