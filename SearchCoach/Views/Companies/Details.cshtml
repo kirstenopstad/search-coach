@@ -2,13 +2,13 @@
   Layout = "_Layout";
 }
 
-<h1>Company Details</h1>
+<h1 style="margin-top: 5%; margin-bottom: 3%">Company Details</h1>
 <hr>
 
 @model SearchCoach.Models.Company
 @using SearchCoach.Models
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h1>@Html.DisplayFor(model => model.Name)</h1>
 
 @* <!-- @if (@Model.JoinEntities.Count == 0 && @ViewBag.Applications.Count == 0)
 {

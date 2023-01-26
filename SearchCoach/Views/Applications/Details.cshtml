@@ -7,9 +7,9 @@
 @model SearchCoach.Models.Application
 <div class="jumbotron text-center">
 
-<h2>Application Details</h2>
+<h2>Application Details:</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Role): @Html.DisplayFor(model => model.Role)</h3>
+<h3 class="border-bottom border-secondary pb-3">@Html.DisplayFor(model => model.Role) at @Html.DisplayFor(model => model.Company.Name)</h3>
 
 @if(@Model.Company == null)
 {
@@ -17,50 +17,63 @@
 }
 else
 {
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Role): @Html.DisplayFor(model => model.Role) </li>
+  <table class="table table-bordered table-hover table-sm table-responsive-lg">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">Role</th>
+      <th scope="col">ResumeURL</th>
+      <th scope="col">CoverLetterURL</th>
+      <th scope="col">IsRemote</th>
+      <th scope="col">IsHybrid</th>
+      <th scope="col">TechStack</th>
+      <th scope="col">Network</th>
+      <th scope="col">Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light">
+      <th scope="row">@Html.DisplayFor(model => model.Role) </th>
+      <th>@Html.DisplayFor(model => model.ResumeURL) </th>
+      <th>@Html.DisplayFor(model => model.CoverLetterURL) </th>
+      <th>@Html.DisplayFor(model => model.IsRemote) </th>
+      <th>@Html.DisplayFor(model => model.IsHybrid) </th>
+      <th>@Html.DisplayFor(model => model.TechStack) </th>
+      <th>@Html.DisplayFor(model => model.Network) </th>
+      <th>@Html.DisplayFor(model => model.Company.Name) </th>
 
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.ResumeURL): @Html.DisplayFor(model => model.ResumeURL) </li>
+    </tr>
+  </tbody>
+</table>
 
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.CoverLetterURL): @Html.DisplayFor(model => model.CoverLetterURL) </li>
+<table class="table table-bordered table-hover table-sm table-responsive-lg">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">Stage</th>
+      <th scope="col">Notes</th>
+      <th scope="col">PhoneScreen</th>
+      <th scope="col">Interview1</th>
+      <th scope="col">Interview2</th>
+      <th scope="col">WhiteBoarding</th>
+      <th scope="col">Offer</th>
+    </tr>
+  </thead>
 
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.IsRemote): @Html.DisplayFor(model => model.IsRemote) </li>
+  <tbody>
+    <tr class="table-light">
+      <th>@Html.DisplayFor(model => model.Status.Stage) </th>
+      <th>@Html.DisplayFor(model => model.Status.Notes) </th>
+      <th>@Html.DisplayFor(model => model.Status.PhoneScreen) </th>
+      <th>@Html.DisplayFor(model => model.Status.Interview1) </th>
+      <th>@Html.DisplayFor(model => model.Status.Interview2) </th>
+      <th>@Html.DisplayFor(model => model.Status.WhiteBoarding) </th>
+      <th>@Html.DisplayFor(model => model.Status.Offer) </th>
+    </tr>
+  </tbody>
+</table>
 
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.IsHybrid): @Html.DisplayFor(model => model.IsHybrid) </li>
-
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.TechStack): @Html.DisplayFor(model => model.TechStack) </li>
-
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Network): @Html.DisplayFor(model => model.Network) </li>
-
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Company): @Html.DisplayFor(model => model.Company.Name) </li>
-
-    <li class="list-group-item border-top-4">
-      @Html.DisplayNameFor(model => model.Status.Stage): @Html.DisplayFor(model => model.Status.Stage) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.Notes): @Html.DisplayFor(model => model.Status.Notes) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.PhoneScreen): @Html.DisplayFor(model => model.Status.PhoneScreen) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.Interview1): @Html.DisplayFor(model => model.Status.Interview1) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.Interview2): @Html.DisplayFor(model => model.Status.Interview2) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.WhiteBoarding): @Html.DisplayFor(model => model.Status.WhiteBoarding) </li>
-    <li class="list-group-item">
-      @Html.DisplayNameFor(model => model.Status.Offer): @Html.DisplayFor(model => model.Status.Offer) </li>
-
-  </ul>
 }
 </div>
 <p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.ApplicationId })</p>
+<p>@Html.ActionLink("Add an Application", "Create", new { id = Model.ApplicationId })</p>
 <p>@Html.ActionLink("Edit Application", "Edit", new { id = Model.ApplicationId })</p>
 <p>@Html.ActionLink("Delete Application", "Delete", new { id = Model.ApplicationId })</p>

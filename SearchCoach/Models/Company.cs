@@ -10,6 +10,7 @@ namespace SearchCoach.Models
     [Required(ErrorMessage = "The company name can't be empty!")]
     public string Name { get; set; }
     // reference
+    public ApplicationUser User { get; set; }
     public List<Application> Applications { get; set; }
   }
 }

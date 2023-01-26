@@ -22,7 +22,6 @@ namespace SearchCoach.Controllers
 
     public ActionResult Index()
     {
-      
       return View();
     }
 
