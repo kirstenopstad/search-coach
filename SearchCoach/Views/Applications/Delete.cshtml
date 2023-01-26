@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1 style="margin-top: 5%;">Delete Application</h1>
+@model SearchCoach.Models.Application
+
+<ul>
+  <li>Name: @Html.DisplayFor(model => model.Role)</li>
+</ul>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-danger btn-md" style="margin-bottom: 3%">
+}
+
+<p class="enlarge">@Html.ActionLink("Back to Applications", "Index")</p>
+<p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>
