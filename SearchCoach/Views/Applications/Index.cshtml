@@ -13,13 +13,37 @@
 } 
 else
 {
-  <ul class="mb-5 list-group">
-    <li class="listTitle">Role | Company</li>
+  <table class="table table-bordered table-hover table-sm table-responsive-lg">
+  <thead>
+      <tr class="table-light">
+      <th scope="col">Role</th>
+      <th scope="col">ResumeURL</th>
+      <th scope="col">CoverLetterURL</th>
+      <th scope="col">IsRemote</th>
+      <th scope="col">IsHybrid</th>
+      <th scope="col">TechStack</th>
+      <th scope="col">Network</th>
+      <th scope="col">Company</th>
+    </tr>
+  </thead>
+  <tbody>
     @foreach (Application application in Model)
     {
-      <li class="list-group-item list-group-item-action"> @Html.ActionLink($"{application.Role}", "Details", new { id = application.ApplicationId }) | @Html.ActionLink($"{application.Company.Name}", "Details", "Companies", new { id = application.Company.CompanyId })</li>
+      <tr class="table-light">
+        <th scope="row">@Html.ActionLink($"{application.Role}", "Details", new { id = application.ApplicationId })</th>
+        <th>@application.ResumeURL</th>
+        <th>@application.CoverLetterURL </th>
+        <th>@application.IsRemote </th>
+        <th>@application.IsHybrid </th>
+        <th>@application.TechStack </th>
+        <th>@application.Network </th>
+        <th>@Html.ActionLink($"{application.Company.Name}", "Details", "Companies", new { id = application.Company.CompanyId })</th>
+      </tr>
     }
-  </ul>
+
+  </tbody>
+</table>
 }
+
 
 <p class="enlarge">@Html.ActionLink("Add new application", "Create")</p>
