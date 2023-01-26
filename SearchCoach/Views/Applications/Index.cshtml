@@ -5,7 +5,7 @@
 @using SearchCoach.Models
 
 
-<h1 style="margin-top: 4%; margin-bottom: 4%;">Aplications</h1>
+<h1 style="margin-top: 4%; margin-bottom: 4%;">Applications</h1>
 
 @if (Model.Count == 0)
 {
@@ -15,15 +15,16 @@ else
 {
   <table class="table table-bordered table-hover table-sm table-responsive-lg">
   <thead>
-      <tr class="table-light">
+      <tr class="table-active">
       <th scope="col">Role</th>
+      <th scope="col">Company</th>
+      <th scope="col">Stage</th>
       <th scope="col">ResumeURL</th>
       <th scope="col">CoverLetterURL</th>
       <th scope="col">IsRemote</th>
       <th scope="col">IsHybrid</th>
       <th scope="col">TechStack</th>
       <th scope="col">Network</th>
-      <th scope="col">Company</th>
     </tr>
   </thead>
   <tbody>
@@ -31,13 +32,14 @@ else
     {
       <tr class="table-light">
         <th scope="row">@Html.ActionLink($"{application.Role}", "Details", new { id = application.ApplicationId })</th>
+        <th>@Html.ActionLink($"{application.Company.Name}", "Details", "Companies", new { id = application.Company.CompanyId })</th>
+        <th>@Html.ActionLink($"{application.Status.Stage}", "Details", new { id = application.ApplicationId })</th>
         <th>@application.ResumeURL</th>
         <th>@application.CoverLetterURL </th>
-        <th>@application.IsRemote </th>
-        <th>@application.IsHybrid </th>
+        <th>@(application.IsRemote ? "Yes" : "No" )</th>
+        <th>@(application.IsHybrid ? "Yes" : "No" )</th>
         <th>@application.TechStack </th>
         <th>@application.Network </th>
-        <th>@Html.ActionLink($"{application.Company.Name}", "Details", "Companies", new { id = application.Company.CompanyId })</th>
       </tr>
     }
 

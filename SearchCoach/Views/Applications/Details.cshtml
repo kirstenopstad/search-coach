@@ -5,10 +5,10 @@
 
 @using SearchCoach.Models
 @model SearchCoach.Models.Application
-<div class="jumbotron text-center">
+<div class="jumbotron text-center mt-4">
 
-<h2>Application Details:</h2>
-<hr />
+@* <h2>Application Details:</h2> *@
+
 <h3 class="border-bottom border-secondary pb-3">@Html.DisplayFor(model => model.Role) at @Html.DisplayFor(model => model.Company.Name)</h3>
 
 @if(@Model.Company == null)
@@ -19,7 +19,7 @@ else
 {
   <table class="table table-bordered table-hover table-sm table-responsive-lg">
   <thead>
-    <tr class="table-light">
+    <tr class="table-active">
       <th scope="col">Role</th>
       <th scope="col">ResumeURL</th>
       <th scope="col">CoverLetterURL</th>
@@ -32,14 +32,14 @@ else
   </thead>
   <tbody>
     <tr class="table-light">
-      <th scope="row">@Html.DisplayFor(model => model.Role) </th>
-      <th>@Html.DisplayFor(model => model.ResumeURL) </th>
-      <th>@Html.DisplayFor(model => model.CoverLetterURL) </th>
-      <th>@Html.DisplayFor(model => model.IsRemote) </th>
-      <th>@Html.DisplayFor(model => model.IsHybrid) </th>
-      <th>@Html.DisplayFor(model => model.TechStack) </th>
-      <th>@Html.DisplayFor(model => model.Network) </th>
-      <th>@Html.DisplayFor(model => model.Company.Name) </th>
+      <th scope="row">@Html.ActionLink($"{Model.Role}", "Edit", new { id = Model.ApplicationId })</th>
+      <th>@Html.ActionLink($"{Model.ResumeURL}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.CoverLetterURL}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.IsRemote}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.IsHybrid}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.TechStack}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.Network}", "Edit", new { id = Model.ApplicationId }) </th>
+      <th>@Html.ActionLink($"{Model.Company.Name}", "Edit", new { id = Model.ApplicationId }) </th>
 
     </tr>
   </tbody>
@@ -47,7 +47,7 @@ else
 
 <table class="table table-bordered table-hover table-sm table-responsive-lg">
   <thead>
-    <tr class="table-light">
+    <tr class="table-active">
       <th scope="col">Stage</th>
       <th scope="col">Notes</th>
       <th scope="col">PhoneScreen</th>
@@ -55,18 +55,24 @@ else
       <th scope="col">Interview2</th>
       <th scope="col">WhiteBoarding</th>
       <th scope="col">Offer</th>
+      <th scope="col">Save</th>
     </tr>
   </thead>
 
   <tbody>
     <tr class="table-light">
-      <th>@Html.DisplayFor(model => model.Status.Stage) </th>
-      <th>@Html.DisplayFor(model => model.Status.Notes) </th>
-      <th>@Html.DisplayFor(model => model.Status.PhoneScreen) </th>
-      <th>@Html.DisplayFor(model => model.Status.Interview1) </th>
-      <th>@Html.DisplayFor(model => model.Status.Interview2) </th>
-      <th>@Html.DisplayFor(model => model.Status.WhiteBoarding) </th>
-      <th>@Html.DisplayFor(model => model.Status.Offer) </th>
+      @using (Html.BeginForm("Edit", "Statuses", routeValues: new { statusId = Model.Status.StatusId, id = Model.ApplicationId}))
+{
+      @Html.Hidden("StatusId", @Model.Status.StatusId)
+      <th>@Html.EditorFor(model => model.Status.Stage) </th>
+      <th>@Html.EditorFor(model => model.Status.Notes) </th>
+      <th>@Html.EditorFor(model => model.Status.PhoneScreen) </th>
+      <th>@Html.EditorFor(model => model.Status.Interview1) </th>
+      <th>@Html.EditorFor(model => model.Status.Interview2) </th>
+      <th>@Html.EditorFor(model => model.Status.WhiteBoarding) </th>
+      <th>@Html.EditorFor(model => model.Status.Offer) </th>
+      <th><input type="submit" value="Save" class="btn-secondary"/></th>
+}
     </tr>
   </tbody>
 </table>

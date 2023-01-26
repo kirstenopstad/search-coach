@@ -76,6 +76,7 @@ namespace SearchCoach.Controllers
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       List<Application> appList = _db.Applications
                                       .Include(model=> model.Company)
+                                      .Include(model=> model.Status)
                                       .Where(entry => entry.User.Id == currentUser.Id)
                                       .ToList();
       return View(appList);

@@ -3,44 +3,30 @@
 }
 
 <h1 style="margin-top: 5%; margin-bottom: 3%">Company Details</h1>
-<hr>
+
 
 @model SearchCoach.Models.Company
 @using SearchCoach.Models
-
-<h1>@Html.DisplayFor(model => model.Name)</h1>
-
-@* <!-- @if (@Model.JoinEntities.Count == 0 && @ViewBag.Applications.Count == 0)
+<div class="jumbotron">
+<h1>@Html.DisplayFor(model => Model.Name)</h1>
+@if (@Model.Applications.Count == 0)
 {
-  <p class="text-danger" style="font-weight: bold;">*No applications are available*</p>
-  <p class="text-danger">Company cannot be assiged an application until an application is added to application list</p>
-  <p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Application to Application List", "Create", "Application")</p>
-}
-else if (@Model.JoinEntities.Count == 0)
-{
-  <p class="text-danger">This company has no applications yet..</p>
-  <p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Application to this Company", "AddApplication", new { id = Model.CompanyId})</p>
+  <h3>No applications have been added to this stylist yet!</h3>
 } 
 else
 {
-  <h3 style="margin-bottom: 2%;">Companies:</h3>
-   <ul>
-    @foreach (CompanyApplciation join in Model.JoinEntities) //CompanyApplciation join table??
-    {
-      @using (Html.BeginForm("DeleteApplication", "Application"))
-      {
-       <li> 
-        @join.Application.Role |
-        @Html.Hidden("joinId", @join.CompanyApplicationId)
-        <input type="submit" value="Delete" class="btn btn-danger btn-md"/>
-      </li>
-      }
-    }
+  
+  <ul class="mb-5 list-group list-group-flush">
+    <li class="list-group-item">Application List:</li>
+@foreach (Application application in Model.Applications)
+        {
+          <li class="list-group-item list-group-item-action">@Html.ActionLink(@application.Role, "Details", "Applications", new { id = @application.ApplicationId}) </li>
+        }
   </ul>
-<p class="enlarge" style="margin-bottom: 4%;">@Html.ActionLink("Add Application to Company", "AddApplication", new { id = Model.CompanyId})</p>
-} --> *@
-<hr style="font-size: 10px;">
+}
 
+
+</div>
 <p class="enlarge">@Html.ActionLink("Edit Company", "Edit", new { id = Model.CompanyId})</p>
 <p class="enlarge">@Html.ActionLink("Delete Company", "Delete", new { id = Model.CompanyId})</p>
 <p class="enlarge">@Html.ActionLink("Back to Company", "Index")</p>
