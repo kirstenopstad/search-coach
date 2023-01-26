@@ -27,5 +27,6 @@ namespace SearchCoach.Models
     public Status Status { get; set; }
     [Required(ErrorMessage = "The date field can't be empty!")]
     public DateTime Date { get; set; }
+    
   }
 }

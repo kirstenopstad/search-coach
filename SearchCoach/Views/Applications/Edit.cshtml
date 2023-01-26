@@ -6,9 +6,9 @@
 <div class="jumbotron text-center">
 <h2>Edit</h2>
 
-<h4>Edit this applicatio : @Html.DisplayFor(model => model.Role)</h4>
+<h4>Edit this application : @Html.DisplayFor(model => model.Role)</h4>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Applications", routeValues: new { statusId = Model.Status.StatusId, id = Model.ApplicationId}))
 {
   @Html.HiddenFor(model => model.ApplicationId)
   <div class="form-row">
@@ -60,7 +60,7 @@
       </div>
   </div>
 
-  <input type="submit" value="Add new application" class="btn-secondary" />
+  <input type="submit" value="Update application" class="btn-secondary" />
 }
 <div class="border-top mt-4 pt-4">
 @* EDIT STATUS *@
