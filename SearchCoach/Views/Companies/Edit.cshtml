@@ -4,14 +4,14 @@
 
 @model SearchCoach.Models.Company
 
-<h1>Edit Company Info Below</h1>
+<h1 style="margin-top: 5%; margin-bottom: 3%">Edit Company Info Below</h1>
 @using (@Html.BeginForm())
 {
   @Html.HiddenFor(model => model.CompanyId)
   <li>Name: @Html.EditorFor(model => model.Name, new {placeholder = @Html.DisplayFor(model => model.Name)})</li>
   
-  <input type="submit" value="Edit" class="btn btn-lg btn-info" style="margin-top: 4%;, margin-bottom: 3%;"/>
+  <input type="submit" value="Save" class="btn btn-lg btn-info" style="margin-top: 4%;, margin-bottom: 3%;"/>
 }
 
-<p class="enlarge">@Html.ActionLink("Back to Companies", "Index")</p>
+<p class="enlarge" style="margin-top: 3%;">@Html.ActionLink("Back to Companies", "Index")</p>
 <p class="enlarge">@Html.ActionLink("Main Menu", "Index", "Home")</p>

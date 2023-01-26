@@ -5,8 +5,8 @@
 @model SearchCoach.Models.Application
 
 <p><strong>NOTE:</strong> You need to have at least one company before you can add an application!</p>
-<p>Go to @Html.ActionLink("this page", "Create", "Companies") to add a company.</p>
-<h4>Add a new application</h4>
+<p>Go to <u class="enlarge">@Html.ActionLink("this page", "Create", "Companies")</u> to add a company.</p>
+<h1 style="margin-top: 5%;">Add a new application</h1>
 
 <p>@Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
@@ -15,61 +15,53 @@
 {
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.Role)
-      @Html.TextBoxFor(model => model.Role)
+     <h3>Role @Html.TextBoxFor(model => model.Role)</h3> 
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.ResumeURL)
-      @Html.TextBoxFor(model => model.ResumeURL)
+      <h3>Resume URL @Html.TextBoxFor(model => model.ResumeURL)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.CoverLetterURL)
-      @Html.TextBoxFor(model => model.CoverLetterURL)
+      <h3>Cover Letter @Html.TextBoxFor(model => model.CoverLetterURL)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.IsRemote)
-      @Html.CheckBoxFor(model => model.IsRemote)
+     <h3>Remote @Html.CheckBoxFor(model => model.IsRemote)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.IsHybrid)
-      @Html.CheckBoxFor(model => model.IsHybrid)
+      <h3>Hybrid @Html.CheckBoxFor(model => model.IsHybrid)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.TechStack)
-      @Html.TextBoxFor(model => model.TechStack)
+      <h3>Tech Stack @Html.TextBoxFor(model => model.TechStack)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.Network)
-      @Html.TextBoxFor(model => model.Network)
+      <h3>Network @Html.TextBoxFor(model => model.Network)</h3>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.Company)
-      @Html.DropDownList("CompanyId")
+      <h3>Company @Html.DropDownList("CompanyId")</h3>
       </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      @Html.LabelFor(model => model.Date)
-      @Html.TextBoxFor(model => model.Date, new { type = "date" })
+      <h3>Date @Html.TextBoxFor(model => model.Date, new { type = "date" })</h3>
+      
     </div>
   </div>
   
 
-  <input type="submit" value="Add new application" class="btn-secondary" />
+  <input type="submit" value="Add" class="btn-secondary"/>
 }
 <div class="button">
   <p class="enlarge">@Html.ActionLink("Show all applications", "Index")</p>
