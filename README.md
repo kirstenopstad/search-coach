@@ -64,7 +64,7 @@ Day 3 –
 1. only show open apps on splash page
 
 ## Setup/Installation Requirements
-
+<!-- 
 #### Get copy of MySQL database
 1. Clone this repo to your workspace.
 2. Open MySQLWorkbench [Click here for instructions to download]
@@ -74,7 +74,27 @@ Day 3 –
   <!-- ![Screenshot of MySQL Import Settings](INSERT SCREENSHOT LINK) -->
   * Select "New..." and set new schema name to **PROJECT-NAME**
   * Select 'Start Import'
-4. You should now have a copy of the **PROJECT-NAME** database on your machine.
+4. You should now have a copy of the **PROJECT-NAME** database on your machine. -->
+
+#### Connect to SearchCoachAPI
+appsettings.json
+```
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Port=3306;database=search_coach_api;uid=root;pwd=epicodus;"
+  }
+}
+```
+cd to searchcoachapi
+dotnet ef databaseupdate
+dotnet watch run
 
 #### Open project
 1. Navigate to the `Project Name` directory.
