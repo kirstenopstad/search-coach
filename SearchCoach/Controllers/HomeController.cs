@@ -24,8 +24,12 @@ namespace SearchCoach.Controllers
       _db = db;
     }
 
-    public async Task<ActionResult> Index()
+    public async Task<IActionResult> Index()
     {
+      // get quote
+      List<Quote> quote = Quote.GetQuote();
+      ViewBag.Quote = quote;
+      
       // get logged in user
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
@@ -50,9 +54,6 @@ namespace SearchCoach.Controllers
         // get total days count
         double dateNow = DateTime.Now.ToOADate(); // get current date 1/24/22
 
-        // !!!!! The issue was in how we were looking for "first app" 
-        // with many users, the "first app" id will be varied, not start at 1 every time
-        // so instead of finding by id, we have to sort and choose first
         int WeeklyAppAvg = 0; // initialize appAvg 
         if (applications.Length != 0) // if no first app, 
         {
