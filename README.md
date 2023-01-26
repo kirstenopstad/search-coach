@@ -70,7 +70,7 @@ Day 4 – Build quotes API & add random quote to app | all hands on the API buil
 
 #### Connect to SearchCoachAPI
 1. Clone the `SearchCaochApi` to your machine
-[Link to SearchCaochApi Repo](https://www.figma.com/file/GfiIBt7LRBAZO8jV8HCKsW/Search-Coach?node-id=0%3A1https://github.com/kirstenopstad/SearchCoachApi)
+[Link to SearchCaochApi Repo](https://github.com/kirstenopstad/SearchCoachApi)
 2. Navigate to the `SearchCoachApi` project directory
 3. Create a file named `appsettings.json` with the following code. Be sure to update the Default Connection to your MySQL credentials.
 ```
