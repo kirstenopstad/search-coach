@@ -15,7 +15,7 @@
 * MySQL Workbench
 * LINQ
 * Identity
-
+***
 ## Description
 
 A web app for tracking job search, displaying data from user-inputted search metrics.
@@ -23,61 +23,55 @@ A web app for tracking job search, displaying data from user-inputted search met
 ### Objectives (MVP)
 
 #### User Stories
-– User can create and login to a user profile. √
-– When logged in, user can:
-  - View all applications √ 
-  - Add new applications √
-  - Update application details √
-  - Delete applications √
-– When logged in, the "splash" page includes:
-  - Weekly application average √
-  - List of Applications √ 
-  - Count of Companies Applied to √
+* User can create and login to a user profile. 
+* When logged in, user can:
+  * View all applications 
+  * Add new applications 
+  * Update application details 
+  * Delete applications 
+* When logged in, the "splash" page includes:
+  * Weekly application average 
+  * List of Applications 
+  * Count of Companies Applied to 
 
 #### Schema
 * Includes relational databases to track multiple job applications for a given user.
   schema: search_coach
   tables: User Profiles, Companies, Applications, Status
+
 #### Classes
 * Profile class joins users to profiles.
 * Company class contains company name, one-to-many relationship with Application and has full CRUD functionality.
 * Application class contains application data (companyId, role, salary, location, remote/hybrid/in-person, etc.) and has full CRUD functionality.
 * Status class contains status details
 
-<!-- ![Screenshot of Databases](imagelink) -->
-
-<!-- [Link to operational site](http://www.kirstenopstad.github.com/<REPOSITORY NAME>) -->
-
-#### Process
-
-Day 1 – Companies & Applications 
-Day 2 – Splash Page & Authentication
-Day 3 – 
-
 ### Goals
-1. Meet MVP
-2. Create & call SearchCoachQuotesAPI to deliver inspiration on splash page
-3. Add method for displaying new job listings based on saved search
-4. Integrate with Git / LinkedIn to track progress on skill-building, networking, etc.
+1. ✅ Meet MVP
+2. ✅ Create & call SearchCoachQuotesAPI to deliver inspiration on splash page
+3. Only show open applications on splash page
+4. (Stretch) Add method for displaying new job listings based on saved search
+5. (Stretch) Integrate with Git / LinkedIn to track progress on skill-building, networking, etc.
+***
+## Process
+[Check out our workflow on Figma](https://www.figma.com/file/GfiIBt7LRBAZO8jV8HCKsW/Search-Coach?node-id=0%3A1)
+### Schema 
+![Screenshot of Schema](SearchCoach/wwwroot/img/schema.png)
+### Schedule
+Day 1 – Companies & Applications | HS + KO on back end | AC + BW on front end
 
-#### Further Exploration
-1. only show open apps on splash page
+Day 2 – Splash Page & Authentication | HS + KO on back end | AC + BW on front end
 
+Day 2 – Splash Page & Troubleshooting Stats Bugs | HS + KO on back end | AC + BW on front end
+
+Day 4 – Build quotes API & add random quote to app | all hands on the API buildout & call
+
+***
 ## Setup/Installation Requirements
-<!-- 
-#### Get copy of MySQL database
-1. Clone this repo to your workspace.
-2. Open MySQLWorkbench [Click here for instructions to download]
-3. Under Administration Tab, select Data Import/Restore
-  * Select 'Import from Self Contained File'
-  * Select ../animal-shelter-export.sql from the AnimalShelter directory
-  <!-- ![Screenshot of MySQL Import Settings](INSERT SCREENSHOT LINK) -->
-  * Select "New..." and set new schema name to **PROJECT-NAME**
-  * Select 'Start Import'
-4. You should now have a copy of the **PROJECT-NAME** database on your machine. -->
 
 #### Connect to SearchCoachAPI
-appsettings.json
+1. Clone the `SearchCaochApi` to your machine
+2. Navigate to the `SearchCoachApi` project directory
+3. Create a file named `appsettings.json` with the following code. Be sure to update the Default Connection to your MySQL credentials.
 ```
 {
   "Logging": {
@@ -88,28 +82,40 @@ appsettings.json
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=search_coach_api;uid=root;pwd=epicodus;"
+    "DefaultConnection": "Server=localhost;Port=3306;database=search_coach_api;uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];"
   }
 }
 ```
-cd to searchcoachapi
-dotnet ef databaseupdate
+4. Install dependencies by running in the project directory
+```
+$ dotnet restore
+```
+5. Build local copy of database by running in the project directory
+```
+$ dotnet ef database update
+```
+6. Build & run API in development by running in the project directory
+ ```
+ $ dotnet run
+ ```
+
+
 dotnet watch run
 
 #### Open project
-1. Navigate to the `Project Name` directory.
+1. Navigate to the `SearchCoach` directory.
 2. Create a file named `appsettings.json` with the following code. Be sure to update the Default Connection to your MySQL credentials.
 ```
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=[PROJECT-NAME];uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];",
+    "DefaultConnection": "Server=localhost;Port=3306;database=search_coach;uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];",
   }
 }
 ```
-3. Install dependencies within the `Project Name` directory
+3. Install dependencies within the `SearchCoach` directory
 ```
 $ dotnet restore
-````
+```
 
 4. To build & run program in development mode 
  ```
@@ -120,14 +126,14 @@ $ dotnet restore
  ```
  dotnet run --launch-profile "production"
  ```
-
+***
 ## Known Bugs
 
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
   * BUG: _A brief description of the bug_
   * FIX: _Suggestion for solution (if you have one!)_
   * If you'd like to be credited, please also include your **_github user profile link_**
-
+***
 ## License
 
 MIT License
