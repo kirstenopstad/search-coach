@@ -25,36 +25,14 @@ A web app for tracking job search, displaying data from user-inputted search met
 #### User Stories
 – User can create and login to a user profile. √
 – When logged in, user can:
-  - View all applications √
+  - View all applications √ 
   - Add new applications √
-  - Update application details
-  - Delete applications
+  - Update application details √
+  - Delete applications √
 – When logged in, the "splash" page includes:
-  - Weekly application average 
-  - List of open Applications 
-  - Count of Companies Applied to 
-
-#### Punch List
-* Views/Home/Index -- Manage Apps & Manage Comps link broken
-* Views/Home/Index -- Add FirstName to ______ Status Title
-* Views/Home/Index -- Add stats: Weekly Avg, All time app / comp / int / phone etc. [from HomeController]
-* Views/Home/Index -- Add indicator to indicate status
-* Views/Home/Index -- get hamburger menu working
-* Views/Home/Index -- add logic to display "Log in to get started" to non-logged in users 
-
-* ApplicationsController -- "Edit" Route is not properly editing apps
-* View/Applications -- not reflecting edit changes -- maybe just controller
-* ApplicationsController -- "Delete" Route sends to a view that doesn't exist -- return to Home Index
-* ApplicationsController -- "Delete" notworking atm -- make it like company
-
-* ApplicationsController -- Add ability to update status/application from index
-* Views/Applications/Index -- Add table with details / edit in place (without changing pages)
-
-* Views/Companies/Edit – should button say save?
-
-* AppsController -- only show apps & stats related to logged in user
-
-* Authorize: CompsController + HomeController
+  - Weekly application average √
+  - List of Applications √ 
+  - Count of Companies Applied to √
 
 #### Schema
 * Includes relational databases to track multiple job applications for a given user.
@@ -81,6 +59,9 @@ Day 3 –
 2. Create & call SearchCoachQuotesAPI to deliver inspiration on splash page
 3. Add method for displaying new job listings based on saved search
 4. Integrate with Git / LinkedIn to track progress on skill-building, networking, etc.
+
+#### Further Exploration
+1. only show open apps on splash page
 
 ## Setup/Installation Requirements
 

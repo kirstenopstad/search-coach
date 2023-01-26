@@ -56,7 +56,7 @@ namespace SearchCoach.Controllers
         int WeeklyAppAvg = 0; // initialize appAvg 
         if (applications.Length != 0) // if no first app, 
         {
-          Application FirstApp = userApps.OrderBy(app => app.Date).First(); // get date of first app ever submitted 1/23/22 
+          Application FirstApp = userApps.OrderByDescending(app => app.Date).First(); // get date of first app ever submitted 1/23/22 
           double dateOfFirstApp = FirstApp.Date.ToOADate(); // get date of first app ever submitted 1/23/22
           int elapsedDays = (int)(dateNow - dateOfFirstApp + 1); // get elapsed days + 1 to include the present day as a day
           int elapsedWeeks = (elapsedDays / 7); if ((elapsedDays % 7) > 0) {elapsedWeeks++;} // get elapsed weeks
